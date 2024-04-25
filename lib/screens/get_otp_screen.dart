@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:store_watch/components/extention.dart';
 import 'package:store_watch/components/text_style.dart';
 import 'package:store_watch/res/dimens.dart';
-import 'package:store_watch/route/names.dart';
+import 'package:store_watch/route/screen_names.dart';
 import 'package:store_watch/widgets/app_text_field.dart';
 import 'package:store_watch/widgets/main_button.dart';
 

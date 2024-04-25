@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:store_watch/components/theme.dart';
-import 'package:store_watch/route/names.dart';
+import 'package:store_watch/route/screen_names.dart';
 import 'package:store_watch/route/routes.dart';
 import 'package:store_watch/screens/register_screen.dart';
 
