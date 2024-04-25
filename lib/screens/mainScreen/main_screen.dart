@@ -6,18 +6,31 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    double btmNavigationHeight = size.height * 0.08;
+    double btmNavHeight = size.height * 0.08;
     return Scaffold(
       body: Stack(
         children: [
+
+          //screen
+          Positioned(
+              top: 0,
+              right: 0,
+              left: 0,
+              bottom: btmNavHeight,
+              child: Container(
+                color: Colors.blue,
+
+              )),
+
+          //btmNavigationBar
           Positioned(
               bottom: 0,
               right: 0,
               left: 0,
               child: Container(
                 color: Colors.pink,
-                height: btmNavigationHeight,
-              ))
+                height: btmNavHeight,
+              )),
         ],
       ),
     );
