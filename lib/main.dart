@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:store_watch/components/theme.dart';
+import 'package:store_watch/route/names.dart';
+import 'package:store_watch/route/routes.dart';
 import 'package:store_watch/screens/register_screen.dart';
 
 void main() {
@@ -15,7 +17,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Watch Store',
       theme: lightTheme(),
-      home: RegisterScreen(),
+      initialRoute: ScreenNames.root,
+      routes: routes,
     );
   }
 }

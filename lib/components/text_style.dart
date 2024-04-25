@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../gen/fonts.gen.dart';
-import '../res/colors.dart';
+import 'package:store_watch/gen/fonts.gen.dart';
+import 'package:store_watch/res/colors.dart';
 
 class AppTextStyles {
   AppTextStyles._();

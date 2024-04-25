@@ -1,6 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:store_watch/components/extention.dart';
+import 'package:store_watch/components/text_style.dart';
 import 'package:store_watch/res/dimens.dart';
+import 'package:store_watch/route/names.dart';
 import 'package:store_watch/widgets/app_text_field.dart';
 import 'package:store_watch/widgets/main_button.dart';
 
@@ -20,12 +23,20 @@ class GetOtpScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset(Assets.png.logoWatch.path),
-            AppDimens.medium.height,
-            Text(AppStrings.otpCodeSendFor
-                .replaceAll(AppStrings.replace, "0912")),
+            Padding(
+                padding: EdgeInsets.only(
+                    left: AppDimens.medium, right: AppDimens.medium),
+                child: Image.asset(Assets.png.logoWatch.path)),
             AppDimens.small.height,
-            const Text(AppStrings.wrongNumberEditNumber),
+            Text(
+              AppStrings.otpCodeSendFor.replaceAll(AppStrings.replace, "0912"),
+              style: AppTextStyles.title,
+            ),
+            AppDimens.small.height,
+            const Text(
+              AppStrings.wrongNumberEditNumber,
+              style: AppTextStyles.primaryThemeTextStyle,
+            ),
             AppDimens.large.height,
             AppTextField(
                 lable: AppStrings.enterVerificationCode,
@@ -34,7 +45,7 @@ class GetOtpScreen extends StatelessWidget {
                 controller: _controller),
             MainButton(
               text: AppStrings.next,
-              onPressed: () {},
+              onPressed: () =>Navigator.pushNamed(context, ScreenNames.registerScreen),
             ),
           ],
         ),
