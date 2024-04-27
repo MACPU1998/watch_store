@@ -3,12 +3,31 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:store_watch/components/text_style.dart';
 import 'package:store_watch/res/colors.dart';
 import 'package:store_watch/res/dimens.dart';
+import 'package:store_watch/screens/mainScreen/basket_screen.dart';
+import 'package:store_watch/screens/mainScreen/home_screen.dart';
+import 'package:store_watch/screens/mainScreen/profile_screen.dart';
+import 'package:store_watch/widgets/btm_nav_item.dart';
 
 import '../../gen/assets.gen.dart';
 import '../../res/string.dart';
 
-class MainScreen extends StatelessWidget {
-  const MainScreen({super.key});
+class BtmNavScreenIndex {
+  BtmNavScreenIndex._();
+
+  static const home = 0;
+  static const basket = 1;
+  static const profile = 2;
+}
+
+class MainScreen extends StatefulWidget {
+  MainScreen({super.key});
+
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  int selectedIndex = BtmNavScreenIndex.home;
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +42,13 @@ class MainScreen extends StatelessWidget {
               right: 0,
               left: 0,
               bottom: btmNavHeight,
-              child: Container(
-                color: Colors.blue,
+              child: IndexedStack(
+                index: selectedIndex,
+                children: const [
+                  HomeScreen(),
+                  BasketScreen(),
+                  ProfileScreen(),
+                ],
               )),
 
           //btmNavigationBar
@@ -38,58 +62,36 @@ class MainScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [/*BtmNavItem()*/],
+                  children: [
+                    BtmNavItem(
+                      iconSvgPath: Assets.svg.user,
+                      iconText: AppStrings.userProfile,
+                      isActive: selectedIndex==BtmNavScreenIndex.profile,
+                      onTab:()=> btmNavOnPressed(index: BtmNavScreenIndex.profile),
+                    ),
+                    BtmNavItem(
+                      iconSvgPath: Assets.svg.home,
+                      iconText: AppStrings.basket,
+                      isActive: selectedIndex==BtmNavScreenIndex.basket,
+                      onTab:()=> btmNavOnPressed(index: BtmNavScreenIndex.basket),
+                    ),
+                    BtmNavItem(
+                      iconSvgPath: Assets.svg.home,
+                      iconText: AppStrings.home,
+                      isActive: selectedIndex==BtmNavScreenIndex.home,
+                      onTab:()=> btmNavOnPressed(index: BtmNavScreenIndex.home),
+                    ),
+                  ],
                 ),
               )),
         ],
       ),
     );
   }
-}
 
-class BtmNavItem extends StatelessWidget {
-  String iconSvgPath;
-  String iconText;
-  bool isActive;
-
-  BtmNavItem(
-      {super.key,
-      required this.iconSvgPath,
-      required this.iconText,
-      required this.isActive});
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {},
-      child: Container(
-        color: AppColors.btmNavColor,
-        child: Padding(
-          padding: const EdgeInsets.all(AppDimens.mini),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SvgPicture.asset(
-                iconSvgPath,
-                colorFilter: ColorFilter.mode(
-                    isActive
-                        ? AppColors.btmNavActiveItem
-                        : AppColors.btmNavInActiveItem,
-                    BlendMode.srcIn),
-              ),
-              const SizedBox(
-                height: AppDimens.small,
-              ),
-              Text(
-                iconText,
-                style: isActive
-                    ? AppTextStyles.btmNavActive
-                    : AppTextStyles.btmNavInActive,
-              )
-            ],
-          ),
-        ),
-      ),
-    );
+  btmNavOnPressed({required index}) {
+    setState(() {
+      selectedIndex = index;
+    });
   }
 }

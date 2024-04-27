@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../components/text_style.dart';
 import '../gen/assets.gen.dart';
@@ -19,7 +20,7 @@ class AppBarRegistration extends StatelessWidget implements PreferredSizeWidget{
       preferredSize: Size(size.width, size.height * 0.1),
       child: Row(
         children: [
-          IconButton(onPressed: ()=>Navigator.pop(context), icon: Image.asset(Assets.svg.back,height: 5,width: 5,)),
+          IconButton(onPressed: ()=>Navigator.pop(context), icon: SvgPicture.asset(Assets.svg.back)),
           const Text(AppStrings.register,style: AppTextStyles.title,)
         ],
       ),
