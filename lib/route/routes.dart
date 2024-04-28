@@ -3,6 +3,8 @@ import 'package:store_watch/screens/get_otp_screen.dart';
 import 'package:store_watch/screens/mainScreen/main_screen.dart';
 import 'package:store_watch/screens/send_otp_screen.dart';
 
+import '../screens/product_list_screen.dart';
+import '../screens/product_single_screen.dart';
 import '../screens/register_screen.dart';
 import 'screen_names.dart';
 
@@ -14,6 +16,6 @@ import 'screen_names.dart';
   ScreenNames.getOtpScreen: (context) => GetOtpScreen(),
   ScreenNames.registerScreen: (context) => RegisterScreen(),
   ScreenNames.mainScreen: (context) => MainScreen(),
-  //ScreenNames.productListScreen: (context) => ProductListScreen(),
-  //ScreenNames.productSingleScreen: (context) => const ProductSingleScreen(),
+  ScreenNames.productListScreen: (context) =>  const ProductListScreen(),
+  ScreenNames.productSingleScreen: (context) =>  const ProductSingleScreen(),
 };

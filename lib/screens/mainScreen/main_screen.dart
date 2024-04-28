@@ -44,8 +44,10 @@ class _MainScreenState extends State<MainScreen> {
               bottom: btmNavHeight,
               child: IndexedStack(
                 index: selectedIndex,
-                children: const [
-                  HomeScreen(),
+                children: [
+                  Navigator(
+                    onGenerateRoute: (settings) => MaterialPageRoute(builder: (context)=>HomeScreen()),
+                  ),
                   BasketScreen(),
                   ProfileScreen(),
                 ],
